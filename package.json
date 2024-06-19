@@ -1,0 +1,28 @@
+{
+  "name": "ADEServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LustyFlix/ADEServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LustyFlix/ADEServer/issues"
+  },
+  "homepage": "https://github.com/LustyFlix/ADEServer#readme",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.17.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "mongodb": "^4.4.1",
+    "nodemon": "^3.1.3"
+  }
+}
