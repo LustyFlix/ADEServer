@@ -178,7 +178,8 @@ app.get('/movie/:id/credits', (req, res) => {
                 const name = $(element).text().trim();
                 const character = $(element).text().trim();
                 const performerId = href ? href.split('/')[1] : '';
-                const poster_path = performerId ? `https://imgs1cdn.adultempire.com/actors/${performerId}h.jpg` : '';
+                // const poster_path = performerId ? `https://imgs1cdn.adultempire.com/actors/${performerId}h.jpg` : '';
+                const poster_path = performerId ? `/${performerId}h.jpg` : '';
                 
                 cast.push({ id: performerId, name, poster_path, character });
             });
