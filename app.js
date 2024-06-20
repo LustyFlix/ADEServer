@@ -176,12 +176,11 @@ app.get('/movie/:id/credits', (req, res) => {
             $('.movie-page__content-tags__performers a').each((index, element) => {
                 const href = $(element).attr('href');
                 const name = $(element).text().trim();
-                const character = $(element).text().trim();
                 const performerId = href ? href.split('/')[1] : '';
                 const profile_path = performerId ? `https://imgs1cdn.adultempire.com/actors/${performerId}h.jpg` : '';
                 // const profile_path = performerId ? `/${performerId}h.jpg` : '';
                 
-                cast.push({ id: performerId, name, profile_path, character });
+                cast.push({ id: performerId, name, profile_path });
             });
     
             const crew = [];
