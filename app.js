@@ -137,7 +137,7 @@ app.get('/movie/:id', (req, res) => {
             });
     
             // Outputting the scraped data
-            res.status(200).json(movie_data);
+            res.status(200).json(movie_data[0]);
     
         } catch (error) {
             console.error(error);
