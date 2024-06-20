@@ -71,8 +71,11 @@ app.get('/movie/:id', (req, res) => {
     
             // Extracting the backdrop path
             const backdropPathStyle = $("#previewContainer").attr("style");
-            const backdrop_path = backdropPathStyle ? backdropPathStyle.match(/background-image:\s*url\(([^)]+)\)/)[1] : '';
-    
+            const backdrop_url = backdropPathStyle ? backdropPathStyle.match(/background-image:\s*url\(([^)]+)\)/)[1] : '';
+            const backdrop_split = backdrop_url ? backdrop_url.split('/')[6] : '';
+            const backdrop_path = 'https://caps1cdn.adultempire.com/o/1920/1080/' + backdrop_split;
+
+            
             // Extracting genres
             const genres = [];
             $('.movie-page__content-tags__categories a').each((index, element) => {
@@ -115,9 +118,11 @@ app.get('/movie/:id', (req, res) => {
             // Extracting backdrops
             const backdrops = [];
             $('div.col-xs-6 img.img-full-responsive').each((index, element) => {
-                const file_path = $(element).attr('data-bgsrc');
-                if (file_path) {
-                    backdrops.push({ file_path });
+                const file_url = $(element).attr('data-bgsrc');
+                if (file_url) {
+                  const file_url_split = file_url ? file_url.split('/')[6] : '';
+                  const file_path = 'https://caps1cdn.adultempire.com/o/1920/1080/' + file_url_split;
+                  backdrops.push({ file_path });
                 }
             });
     
