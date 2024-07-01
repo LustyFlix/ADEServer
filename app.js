@@ -226,6 +226,74 @@ app.get('/movie/:id/credits', (req, res) => {
   }
 });
 
+// Person Details
+app.get('/person/:id', (req, res) => {
+  if (req.params.id) {
+    const cheerio = require('cheerio');
+    const axios = require('axios');
+    
+    const id = req.params.id;
+    const url = `https://www.adultdvdempire.com/${id}`;
+    
+    console.log(url);
+    
+    async function getPerson() {
+      try {
+        const response = await axios.get(url);
+        const $ = cheerio.load(response.data);
+
+
+
+        const adult = 'True';
+        const id = url ? url.split('/')[3] : '';
+
+        const imdb_id = id;
+
+        const known_for_department = 'Acting';
+        
+        // Extracting the title
+        const name = $('h1').text().trim();
+
+        // Extracting overview
+        const biography = $('.modal-body.text-md').html();
+
+        // Extracting poster path
+        profile_path = id ? `https://imgs1cdn.adultempire.com/actors/${id}h.jpg` : '';
+
+        // Pushing data to person_data array
+        const person_data = {
+          adult,
+          // also_known_as,
+          biography,
+          // birthday,
+          // deathday,
+          // gender,
+          // homepage,
+          id,
+          imdb_id,
+          known_for_department,
+          name,
+          // place_of_birth,
+          // popularity,
+          profile_path
+        };
+
+        // Outputting the scraped data
+        res.status(200).json(person_data);
+
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Could not fetch person' });
+      }
+    }
+    
+    getPerson();
+
+  } else {
+    res.status(500).json({ error: 'Could not fetch the document' });
+  }
+});
+
 // Search Movie ID
 app.get('/search/:id', (req, res) => {
   if (req.params.id) {
