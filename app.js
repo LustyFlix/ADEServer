@@ -187,9 +187,10 @@ app.get('/movie/:id/credits', (req, res) => {
         $('.movie-page__content-tags__performers a').each((index, element) => {
           const href = $(element).attr('href');
           const name = $(element).text().trim();
+
           const performerId = href ? href.split('/')[1] : '';
           const profile_path = performerId ? `https://imgs1cdn.adultempire.com/actors/${performerId}h.jpg` : '';
-          cast.push({ id: performerId, name, profile_path });
+          cast.push({ id: performerId, name, profile_path, known_for_department: 'Acting' });
         });
     
         const crew = [];
@@ -200,7 +201,7 @@ app.get('/movie/:id/credits', (req, res) => {
           const profile_path = crewId ? `https://imgs1cdn.adultempire.com/studio/${crewId}.jpg` : '';
     
           if (crewId) {
-            crew.push({ id: crewId, name, profile_path, department: 'Directing' });
+            crew.push({ id: crewId, name, profile_path, known_for_department: 'Directing', department: 'Directing' });
           }
         });
     
