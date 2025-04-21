@@ -61,7 +61,7 @@ app.get('/movie/:id', (req, res) => {
     const axios = require('axios');
     
     const id = req.params.id;
-    const url = `https://www.adultdvdempire.com/${id}`;
+    const url = `https://adultempire.lustycodes.workers.dev/?url=https://www.adultdvdempire.com/${id}`;
     
     console.log(url);
     
@@ -174,7 +174,7 @@ app.get('/movie/:id/credits', (req, res) => {
     const axios = require('axios');
     
     const id = req.params.id;
-    const url = `https://www.adultdvdempire.com/${id}`;
+    const url = `https://adultempire.lustycodes.workers.dev/?url=https://www.adultdvdempire.com/${id}`;
     
     async function getCredits() {
       try {
@@ -234,7 +234,7 @@ app.get('/person/:id', (req, res) => {
     const axios = require('axios');
     
     const id = req.params.id;
-    const url = `https://www.adultdvdempire.com/${id}`;
+    const url = `https://adultempire.lustycodes.workers.dev/?url=https://www.adultdvdempire.com/${id}`;
     
     console.log(url);
     
